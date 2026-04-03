@@ -30,7 +30,7 @@ services:
     ports:
       - "5235:8080"
     environment:
-      - ConnectionStrings__Default=server=mysql_db;port=3306;database=kltn;user=root;password=Root@123456
+      - ConnectionStrings__Default=server=${DB_HOST};port=${DB_PORT};database=${DB_NAME};user=${DB_USER};password=${DB_PASSWORD}
 
   frontend:
     image: dinhthi2509/kltn-frontend:latest
