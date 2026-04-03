@@ -40,7 +40,7 @@ function ResetPassword() {
     <div className={cx("container")}>
       <div className={cx("header_title")}>
         <div className={cx("welcome_title")}>
-          <h1>Đặt lại mật khẩu</h1>
+          <h1>Đặt lại mật khẩu mới</h1>
         </div>
       </div>
       <div className={cx("input_container")}>
