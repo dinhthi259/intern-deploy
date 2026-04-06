@@ -20,10 +20,12 @@ pipeline {
         }
 
         stage('Run New Containers') {
-            sh '''
-            docker-compose down || true
-            docker-compose up -d --build
-            '''
+            steps {
+                sh '''
+                docker-compose down || true
+                docker-compose up -d --build
+                '''
+            }
         }
 
         stage('Check Running') {
