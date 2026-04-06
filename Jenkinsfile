@@ -7,12 +7,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
-            steps {
-                git 'https://github.com/dinhthi259/intern-deploy.git'
-            }
-        }
-
         stage('Build Docker Images') {
             steps {
                 sh 'docker-compose build'
