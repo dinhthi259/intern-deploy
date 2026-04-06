@@ -57,7 +57,7 @@ function ResetPassword() {
             />
             <input
               type="text"
-              placeholder="Nhập mật khẩu mới nhe"
+              placeholder="Nhập mật khẩu mới"
               autoComplete="off"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
