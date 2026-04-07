@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-        
+
         stage('Login DockerHub') {
             steps {
                 sh '''
@@ -36,6 +36,18 @@ pipeline {
                 '''
             }
         }
+
+        stage('Build & Push Docker Image') {
+            steps {
+                sh '''
+                docker build -t dinhthi2509/kltn-backend:latest ./backend
+                docker build -t dinhthi2509/kltn-frontend:latest ./frontend
+
+                docker push dinhthi2509/kltn-backend:latest
+                docker push dinhthi2509/kltn-frontend:latest
+                '''
+            }
+        }       
 
         stage('Check Running') {
             steps {
