@@ -87,7 +87,7 @@ function Register() {
                 />
                 <input
                   type={showPassword ? "text" : "password"}
-                  placeholder="Nhập mật khẩu"
+                  placeholder="Nhập mật khẩu 2"
                   autoComplete="off"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
