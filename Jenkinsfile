@@ -1,15 +1,11 @@
 pipeline {
     agent any
 
-    environment {
-        PROJECT_NAME = "intern-deploy"
-    }
-
     stages {
 
-        stage('Build Docker Images') {
+        stage('Pull Latest Images') {
             steps {
-                sh 'docker-compose build'
+                sh 'docker-compose pull'
             }
         }
 
@@ -21,10 +17,7 @@ pipeline {
 
         stage('Run New Containers') {
             steps {
-                sh '''
-                docker-compose down || true
-                docker-compose up -d --build
-                '''
+                sh 'docker-compose up -d'
             }
         }
 
@@ -33,6 +26,5 @@ pipeline {
                 sh 'docker ps'
             }
         }
-       
     }
 }
