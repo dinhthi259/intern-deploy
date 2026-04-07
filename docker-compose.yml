@@ -6,14 +6,13 @@ services:
     image: mysql:8
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Root@123456
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: kltn
     ports:
       - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
       - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
-
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 5s
@@ -21,14 +20,14 @@ services:
       retries: 5
 
   backend:
-    image: dinhthi2509/kltn-backend:latest 
+    image: dinhthi2509/kltn-backend:latest
     depends_on:
       mysql:
         condition: service_healthy
     ports:
       - "5235:8080"
     environment:
-      - ConnectionStrings__Default=server=${DB_HOST};port=${DB_PORT};database=${DB_NAME};user=${DB_USER};password=${DB_PASSWORD}
+      - ConnectionStrings__Default=server=mysql;port=3306;database=kltn;user=root;password=${MYSQL_ROOT_PASSWORD}
 
   frontend:
     image: dinhthi2509/kltn-frontend:latest
